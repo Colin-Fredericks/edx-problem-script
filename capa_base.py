@@ -679,7 +679,8 @@ class CapaMixin(CapaFields):
                 "Your answers were previously saved. Click '{button_name}' to grade them."
             ).format(button_name=self.submit_button_name())
 
-        correctness = None if len(self.correct_map.keys()) == 0 else self.correct_map[self.correct_map.keys()[0]]['correctness']
+        correctness = self._get_answer_notification(True)[0] #We only care about the type here
+        final_demand_hint = None if len(demand_hints) == 0 else not should_enable_next_hint
 
         context = {
             'problem': content,
@@ -695,7 +696,8 @@ class CapaMixin(CapaFields):
             'attempts_allowed': self.max_attempts,
             'demand_hint_possible': demand_hint_possible,
             'should_enable_next_hint': should_enable_next_hint,
-            'demand_hints': demand_hints,
+            'number_demand_hints': len(demand_hints),
+            'final_demand_hint': final_demand_hint,
             'answer_notification_type': answer_notification_type,
             'answer_notification_message': answer_notification_message,
             'has_saved_answers': self.has_saved_answers,
