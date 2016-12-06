@@ -1,0 +1,10 @@
+Files for Problem Javascript Project:
+
+Django template for all problems:
+file:///Users/cof945/Documents/devstack/edx-platform/lms/templates/problem.html
+This is where I'm planning to insert the javascript call.
+
+The base python for all CAPA problems:
+file:///Users/cof945/Documents/devstack/edx-platform/common/lib/xmodule/xmodule/capa_base.py
+This is what creates the "context" for the Django template. Needed to add some items, like grades.
+
