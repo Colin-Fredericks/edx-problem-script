@@ -695,6 +695,7 @@ class CapaMixin(CapaFields):
             'attempts_allowed': self.max_attempts,
             'demand_hint_possible': demand_hint_possible,
             'should_enable_next_hint': should_enable_next_hint,
+            'demand_hints': demand_hints,
             'answer_notification_type': answer_notification_type,
             'answer_notification_message': answer_notification_message,
             'has_saved_answers': self.has_saved_answers,
@@ -704,9 +705,6 @@ class CapaMixin(CapaFields):
             'max_score': self.get_score()['total'],
             'score': self.get_score()['score'],
         }
-        print "#########################"
-        print type(context['correctness'])
-        print "#########################"
 
         html = self.runtime.render_template('problem.html', context)
 
