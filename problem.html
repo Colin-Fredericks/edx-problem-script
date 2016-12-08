@@ -134,4 +134,29 @@ from openedx.core.djangolib.markup import HTML
       notification_message=save_message,
       is_hidden=not has_saved_answers"
     />
+    <script type="text/javascript">
+        if(edxProblemData == null){
+            var edxProblemData = {};
+            console.log('edxProblemData variable created');
+        }
+        if(edXProblemCounter == null){
+            var edXProblemCounter = 0;
+        }
+        jQuery( document ).ready(function() {
+        
+            var short_id = document.getElementsByClassName('problem')[edXProblemCounter].getAttribute('data-short-id');
+            var correctness = document.getElementsByClassName('problem')[edXProblemCounter].getAttribute('data-correctness');
+            var score = document.getElementsByClassName('problem')[edXProblemCounter].getAttribute('data-score');
+
+            edxProblemData[short_id] = {
+                'short_id': short_id,
+                'correctness': correctness,
+                'score': score
+            };
+
+            console.log('Data stored for problem ' + short_id);
+            edXProblemCounter++;
+        });
+
+    </script>
 </div>
